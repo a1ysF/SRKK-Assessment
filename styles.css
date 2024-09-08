@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+/* Import Source Sans Pro font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+/* Set the entire page background to grey */
+body {
+  background-color: #2e2e2e;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Container for Add New Expense (Light Purple) */
+.expense-form-container {
+  background-color: #b69dff; /* Light purple for the form container */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  max-width: 800px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container */
+  overflow-x: visible;
+}
+
+.new-expense-section input.form-control-lg {
+  background-color: #ffffff;
+  border: none;
+  color: #333;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 0.9rem;
+  width: 100%; /* Set width to 100% of the column */
+  height: auto;
+  margin-bottom: -15px;
+  box-sizing: border-box;
+}
+
+
+
+/* Month bars styling */
+.month-bars {
+  background-color: #fcdcfc; /* Pink for the bar container */
+  border-radius: 10px;
+  padding-top: 15px; /* Adjusted padding */
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Align bars and labels at the bottom */
+  margin-bottom: -35px;
+  max-width: 100%; /* Ensure container doesn't overflow */
+  overflow: hidden;
+}
+
+/* Style for each bar container */
+.month-bar-container {
+  text-align: center;
+  flex: 1;
+  margin: 0 5px;
+  margin-bottom: 0;
+  position: relative;
+  height: 150px; /* Set a fixed height for the container */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Ensure bars and labels are aligned at the bottom */
+  align-items: center; /* Center the bars and labels horizontally */
+}
+
+/* Style for each bar */
+.month-bar {
+  width: 30px; /* Narrower width for oval shape */
+  height: 100%; /* Bars take up full height of the container */
+  background-color: #c8b4f4; /* Default background for unfilled portion */
+  border-radius: 15px; /* Default rounded edges */
+  border: 1px solid #868688;
+  position: relative;
+  overflow: hidden;
+}
+
+/* The filled part of the bar */
+.month-bar .bar-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #4c24bc; /* Purple fill */
+  height: 0; /* This will be dynamically set based on expenses */
+  border-radius: 0 0 15px 15px; /* Straight top for partially filled bars */
+  transition: height 0.3s ease;
+  border: 1px solid #868688;
+}
+
+/* Add a class for fully filled bars */
+.month-bar .bar-fill.full {
+  border-radius: 15px; /* Rounded top for fully filled bars */
+}
+
+/* Label below each bar */
+.month-label {
+  margin-top: 2px;
+  font-size: 1rem;
+  color: black; /* Changed label color to black */
+  font-family: 'Source Sans Pro', sans-serif; /* Apply Source Sans Pro font */
+  line-height: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+
+
+
+/* Labels styling */
+.form-label {
+  color: black; /* Black text for labels */
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Expenses List Section */
+.expenses-list-container {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  max-width: 800px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Styling for the Add New Expense button */
+.btn-primary {
+  background-color: #41015d; /* Darker purple */
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: -10px;
+}
+
+/* Expenses Section */
+.expenses-section {
+  background-color: #1e1f1e;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px; /* Set a maximum width for the expenses section */
+  margin: 0 auto; /* Center the expenses section */
+}
+
+/* Month bars styling */
+/* .month-bar {
+  background-color: #b69dff;  
+  width: 60px;
+  height: 100px;
+  margin: 0 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+} */
+
+
+
+
+/* Expense Items */
+.expense-item {
+  background-color: #4c4c4c; /* Darker grey for expense items */
+  padding: 8px;
+  margin: 12px 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
+
+/* Date container styling */
+.expense-date-container {
+  background-color: #2c2c2c; /* Dark grey background for the date box */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 15px;
+  width: 80px;
+  height: 80px; /* Set a smaller height */
+  flex-direction: column;
+  border: 1px solid grey; /* Add a white outline */
+  font-family: 'Source Sans Pro', sans-serif; /* Use Source Sans Pro font */
+}
+
+/* Date day styling */
+.expense-date-day {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -2px ;
+}
+
+/* Date info (month and year) styling */
+.expense-date-info {
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  font-family: 'Source Sans Pro', sans-serif; /* Ensure Source Sans Pro for month and year */
+}
+
+/* Make month bold */
+.expense-date-info span:first-child {
+  font-weight: bold; /* Bold month */
+  margin-bottom: -2px;
+}
+
+
+/* Expense Info and amount styling */
+.expense-info {
+  text-align: left; /* Align text to the left */
+  margin-right: auto; /* Ensure it fills the space on the right of the date */
+}
+
+.expense-info p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+  font-weight: bold;
+  font-family: 'Source Sans Pro', sans-serif; /* Use Source Sans Pro font */
+}
+
+.expense-amount {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #44045c; /* Purple background for the amount */
+  padding: 7px 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid grey; /* Add a white outline */
+  font-family: 'Source Sans Pro', sans-serif; /* Use Source Sans Pro font */
+}
+
+/* No expenses message */
+#no-expenses {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 100px;
+  font-weight: bold;
+}
+
+.d-none {
+  display: none;
+}
+
+
+
+
+
+/* Buttons styling */
+.btn-primary, .btn-success, .btn-danger {
+  font-family: 'Source Sans Pro', sans-serif; /* Apply the Roboto font */
+  background-color: #41015d;
+  color: rgb(235, 235, 235);
+  font-size: 0.9rem; /* Smaller font size */
+  border: none;
+  border-radius: 10px;
+  padding: 15px 20px; /* Increase padding at the top and bottom */
+  margin: 5px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover {
+  background-color: #35014b; /* Darker hover effect */
+}
+
+.btn-success {
+  background-color: #41015d; /* Darker purple for "Add Expense" */
+  padding: 15px 30px;
+  margin: 5px; /* Reduced margin to bring it closer to the container */
+}
+
+.btn-danger {
+  background-color: #41015d; /* Lighter purple for "Cancel" */
+  padding: 15px 30px;
+  margin: 5px; /* Reduced margin to bring it closer to the container */
+}
+
+.btn-primary {
+  background-color: #41015d; /* Darker purple */
+  border-radius: 10px; /* Rounded corners */
+  padding: 12px 30px;
+  margin: 8px; /* Reduced margin to bring it closer to the container */
+  margin-bottom: -8px !important; /* Reduced margin to bring it closer to the container */
+}
+
+/* Ensure no extra margin or padding on the parent container */
+.expense-form-container {
+  padding-bottom: 5px !important; /* Remove any extra padding */
+  padding-top: 5px !important; /* Remove any extra padding */
+  margin-bottom: 25px !important; /*Remove any extra margin */
+}
+
+.text-end {
+  text-align: end;
+}
+
+/* Apply custom width for the form inputs */
+.custom-width {
+  width: 45%; /* Width slightly larger than col-md-5 */
+  margin-bottom: 15px; /* Spacing between inputs */
+}
+
+
+
+
+
+
+/* Flex layout for Filter by Year */
+.filter {
+  display: flex;
+  justify-content: space-between; /* Ensures the dropdown is on the right */
+  align-items: center; /* Vertically center the dropdown with the text */
+  padding: 10px 20px;
+  margin-bottom: 0px !important;
+}
+
+/* Styling for the filter text */
+.filter h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 12px;
+  color: #ffffff;
+}
+
+/* Custom styling for the select dropdown */
+.filter-year-select select {
+  background-color: #ffffff;
+  border: none;
+  color: #333;
+  padding: 8px 16px;
+  font-size: 0.9rem; /* Smaller font size */
+  font-weight: 800 !important; /* Semi-bold text */
+  font-weight: 800 !important; /* Semi-bold text */
+  font-weight: bold ;
+  font-family: 'Source Sans Pro', sans-serif; /* Apply Source Sans Pro */
+  border-radius: 5px;
+  box-shadow: none;
+  width: 130px !important;
+  text-align: center; /* Centers text inside dropdown */
+}
+
+/* Remove default focus outline */
+.filter-year-select select:focus {
+  outline: none;
+  box-shadow: none;
+  font-weight: bold;
+}
+
+/* Adjustments for mobile responsiveness */
+@media (max-width: 768px) {
+  .custom-width {
+    width: 100%;
+  }
+
+  .btn-primary, .btn-success, .btn-danger {
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+/* Center buttons on smaller screens */
+@media (max-width: 576px) {
+  .text-end {
+    text-align: center;
+  }
+}
+
+h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
